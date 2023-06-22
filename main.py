@@ -15,21 +15,20 @@ from discohook import (
 )
 from thefuzz import fuzz
 
-APPLICATION_ID = os.getenv("APPLICATION_ID")
-APPLICATION_TOKEN = os.getenv("APPLICATION_TOKEN")
-APPLICATION_PUBLIC_KEY = os.getenv("APPLICATION_PUBLIC_KEY")
+APPLICATION_ID = os.getenv("DISCORD_APPLICATION_ID")
+TOKEN = os.getenv("DISCORD_TOKEN")
+PUBLIC_KEY = os.getenv("DISCORD_PUBLIC_KEY")
+# TODO: make repo url optional
 REPOSITORY_URL = os.getenv("REPOSITORY_URL")
 GIT_BRANCH = os.getenv("GIT_BRANCH", "main")
 
-if not (
-    APPLICATION_ID and APPLICATION_TOKEN and APPLICATION_PUBLIC_KEY and REPOSITORY_URL
-):
+if not (APPLICATION_ID and TOKEN and PUBLIC_KEY and REPOSITORY_URL):
     raise ValueError("missing environment variables")
 
 app = Client(
     application_id=APPLICATION_ID,
-    token=APPLICATION_TOKEN,
-    public_key=APPLICATION_PUBLIC_KEY,
+    token=TOKEN,
+    public_key=PUBLIC_KEY,
 )
 
 
