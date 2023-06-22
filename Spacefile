@@ -1,16 +1,26 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
   - name: bot
-    src: .
+    src: ./
     engine: python3.9
     public_routes:
       - "/interactions"
     run: uvicorn main:app
     presets:
       env:
-        - name: APPLICATION_ID
-        - name: APPLICATION_TOKEN
-        - name: APPLICATION_PUBLIC_KEY
+        - name: DISCORD_APPLICATION_ID
+          description: The application ID of the bot.
+
+        - name: DISCORD_TOKEN
+          description: The token of the bot.
+
+        - name: DISCORD_PUBLIC_KEY
+          description: The public key of the bot.
+
         - name: REPOSITORY_URL
+          description: The URL of the bot's repository to use for file links.
+
         - name: GIT_BRANCH
+          description: The git branch of the bot's repository to use for file links.
           default: main
